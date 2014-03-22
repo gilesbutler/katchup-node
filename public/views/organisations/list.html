@@ -1,0 +1,10 @@
+<section data-ng-controller="OrganisationsController" data-ng-init="find()">
+	<ul class="organisations unstyled">
+		<li data-ng-repeat="organisation in organisations">
+			<span>{{organisation.created | date:'medium'}}</span> /
+			<span>{{organisation.user.name}}</span>
+			<h2><a data-ng-href="#!/organisations/{{organisation._id}}">{{organisation.name}}</a></h2>
+		</li>
+	</ul>
+	<h1 data-ng-hide="!organisations || organisations.length">No organisations yet. <br> Why don't you <a href="/#!/organisations/create">Create One</a>?</h1>
+</section>

@@ -8,21 +8,37 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
 
     // states for my app
     $stateProvider
-      .state('all articles', {
-        url: '/articles',
-        templateUrl: 'views/articles/list.html'
+      .state('all posts', {
+        url: '/posts',
+        templateUrl: 'views/posts/list.html'
     })
-      .state('create article', {
-        url: '/articles/create',
-        templateUrl: 'views/articles/create.html'
+      .state('create post', {
+        url: '/posts/create',
+        templateUrl: 'views/posts/create.html'
     })
-      .state('edit article', {
-        url: '/articles/:articleId/edit',
-        templateUrl: 'views/articles/edit.html'
+      .state('edit post', {
+        url: '/posts/:postId/edit',
+        templateUrl: 'views/posts/edit.html'
     })
-      .state('article by id', {
-        url: '/articles/:articleId',
-        templateUrl: 'views/articles/view.html'
+      .state('post by id', {
+        url: '/posts/:postId',
+        templateUrl: 'views/posts/view.html'
+    })
+      .state('all organisations', {
+        url: '/organisations',
+        templateUrl: 'views/organisations/list.html'
+    })
+      .state('create organisation', {
+        url: '/organisations/create',
+        templateUrl: 'views/organisations/create.html'
+    })
+      .state('edit organisation', {
+        url: '/organisations/:organisationId/edit',
+        templateUrl: 'views/organisations/edit.html'
+    })
+      .state('organisation by id', {
+        url: '/organisations/:organisationId',
+        templateUrl: 'views/organisations/view.html'
     })
       .state('home', {
         url: '/',

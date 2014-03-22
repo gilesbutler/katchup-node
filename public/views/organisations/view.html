@@ -1,0 +1,19 @@
+<section data-ng-controller="OrganisationsController" data-ng-init="findOne()">
+    <span>{{organisation.created | date:'medium'}}</span> /
+    <h2>{{organisation.name}}</h2>
+    <p>{{organisation.url}}</p>
+    <p>{{organisation.admin_id}}</p>
+    <p>{{organisation.sector}}</p>
+    <p>{{organisation.logo_url}}</p>
+    <p>{{organisation.twitter_username}}</p>
+    <p>{{organisation.facebook_url}}</p>
+    <p>{{organisation.user_ids}}</p>
+    <div data-ng-show="global.user._id == organisation.user._id">
+        <a class="btn" href="/#!/organisations/{{organisation._id}}/edit">
+        	<i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
+</section>

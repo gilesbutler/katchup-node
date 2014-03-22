@@ -11,11 +11,16 @@ var mongoose = require('mongoose'),
  * User Schema
  */
 var UserSchema = new Schema({
-    name: {
+    first_name: {
+        type: String,
+        required: true
+    },
+    last_name: {
         type: String,
         required: true
     },
     email: String,
+    role: String,
     username: {
         type: String,
         unique: true
@@ -27,7 +32,11 @@ var UserSchema = new Schema({
     twitter: {},
     github: {},
     google: {},
-    linkedin: {}
+    linkedin: {},
+    organisation_id: {
+        type: Schema.ObjectId,
+        ref: 'Organisation'
+    },
 });
 
 /**
@@ -48,12 +57,18 @@ var validatePresenceOf = function(value) {
     return value && value.length;
 };
 
-// the below 4 validations only apply if you are signing up traditionally
-UserSchema.path('name').validate(function(name) {
+// the below validations only apply if you are signing up traditionally
+UserSchema.path('first_name').validate(function(first_name) {
     // if you are authenticating by any of the oauth strategies, don't validate
     if (!this.provider) return true;
-    return (typeof name === 'string' && name.length > 0);
-}, 'Name cannot be blank');
+    return (typeof first_name === 'string' && first_name.length > 0);
+}, 'First name cannot be blank');
+
+UserSchema.path('last_name').validate(function(last_name) {
+    // if you are authenticating by any of the oauth strategies, don't validate
+    if (!this.provider) return true;
+    return (typeof last_name === 'string' && last_name.length > 0);
+}, 'First name cannot be blank');
 
 UserSchema.path('email').validate(function(email) {
     // if you are authenticating by any of the oauth strategies, don't validate
